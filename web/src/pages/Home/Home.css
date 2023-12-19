@@ -1,0 +1,17 @@
+.container {
+  width: 100vw;
+  height: 100vh;
+
+  font-size: 18px;
+}
+
+.content {
+  margin-left: 15%;
+  margin-right: 15%;
+}
+
+.side-nav {
+  position: absolute;
+  bottom: 4vh;
+  left: 4vh;
+}
