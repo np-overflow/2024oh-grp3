@@ -1,17 +1,16 @@
-.container {
-  width: 100vw;
-  height: 100vh;
-
-  font-size: 18px;
-}
-
 .content {
-  margin-left: 15%;
-  margin-right: 15%;
+  margin-left: 17%;
+  margin-right: 17%;
 }
 
 .side-nav {
   position: absolute;
   bottom: 4vh;
   left: 4vh;
+}
+
+.icon {
+  width: 170px;
+  height: auto;
+  padding: 30px;
 }
