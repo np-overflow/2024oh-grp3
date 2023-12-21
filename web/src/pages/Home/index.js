@@ -69,7 +69,7 @@ function DetailsPopup({ popupShown, setPopupShown, topic }) {
         }
 
         // Add a new user into firebase
-        const dbUser =  doc(db, "users", user.id);
+        const dbUser = doc(db, "users", user.id);
         await setDoc(dbUser, user);
 
         // Check if user is added
@@ -78,7 +78,7 @@ function DetailsPopup({ popupShown, setPopupShown, topic }) {
             setErr(`Failed to add User: ${user.username} to database.`)
         } else {
             setErr("") // Reset error msg
-            navigate("/game")
+            navigate(`/game?topic=${topic}?user=${user.id}`)
         }
     }
 
