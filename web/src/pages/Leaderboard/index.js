@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom"
 import { ChevronLeftIcon, TrophyIcon } from '@heroicons/react/24/solid'
 import { useEffect, useState } from "react"
-import db from "../../firebase/config"
+import db from "../../lib/firebase-config"
 import { collection, onSnapshot } from "firebase/firestore"
 
 export default function Leaderboard() {

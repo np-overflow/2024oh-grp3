@@ -1,6 +1,6 @@
 import { useSearchParams } from "react-router-dom"
 import { useState } from "react";
-import db from "../../firebase/config";
+import db from "../../lib/firebase-config";
 import { doc, setDoc, getDoc } from "firebase/firestore"; 
 
 export default function Game() {

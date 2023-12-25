@@ -3,7 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import { ChartBarIcon } from '@heroicons/react/24/solid'
 import { v4 as uuidv4 } from 'uuid';
-import db from '../../firebase/config';
+import db from '../../lib/firebase-config';
 import { doc, setDoc, getDoc } from "firebase/firestore"; 
 
 export default function Home() {
