@@ -1,7 +1,7 @@
 import './Home.css';
 import { Link, useNavigate } from 'react-router-dom';
 import { useState } from 'react';
-import { BarChart2 } from 'react-feather';
+import { ChartBarIcon } from '@heroicons/react/24/solid'
 import { v4 as uuidv4 } from 'uuid';
 import db from '../../firebase/config';
 import { doc, setDoc, getDoc } from "firebase/firestore"; 
@@ -36,8 +36,8 @@ export default function Home() {
             </button>
     
             <Link to="/leaderboard">
-                <div className='side-nav text-white flex flex-row gap-3 py-3 px-5 rounded-xl bg-gray-800 cursor-pointer'>
-                    <BarChart2 strokeWidth={3} />
+                <div className='side-nav text-white flex items-center flex-row gap-3 py-3 px-5 rounded-xl bg-gray-800 cursor-pointer'>
+                    <ChartBarIcon className="w-5 h-5" strokeWidth={3} />
                     <p>Leaderboard</p>
                 </div>
             </Link>
