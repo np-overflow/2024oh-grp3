@@ -7,7 +7,7 @@ import db from '../../lib/firebase-config';
 import { doc, setDoc, getDoc } from "firebase/firestore"; 
 
 export default function Home() {
-    const topics = ["something1", "something2", "something3", "something4", "something5", "something6", "something7", "something8"] // should be replaced by API
+    const topics = ["Ngee Ann", "IT", "Math", "Science"] // should be replaced by API
     const [selectedTopic, setSelectedTopic] = useState()
     const [popupShown, setPopupShown] = useState(false)
 
@@ -21,7 +21,7 @@ export default function Home() {
     
             <div className='content flex justify-center flex-wrap gap-10'>
                 {topics.map((topic) => (
-                    <div key={topic} className={`p-5 cursor-pointer ${selectedTopic === topic ? "bg-cyan-950" : "bg-cyan-600"} hover:bg-cyan-900 rounded-lg`} onClick={() => setSelectedTopic(topic)}>
+                    <div key={topic} className={`p-5 w-5/12 text-center cursor-pointer ${selectedTopic === topic ? "bg-cyan-950" : "bg-cyan-600"} hover:bg-cyan-900 rounded-lg`} onClick={() => setSelectedTopic(topic)}>
                         <p>{topic}</p>
                     </div>
                 ))}
@@ -78,7 +78,7 @@ function DetailsPopup({ popupShown, setPopupShown, topic }) {
             setErr(`Failed to add User: ${user.username} to database.`)
         } else {
             setErr("") // Reset error msg
-            navigate(`/game?topic=${topic}?user=${user.id}`)
+            navigate(`/game?topic=${topic}&user=${user.id}`)
         }
     }
 

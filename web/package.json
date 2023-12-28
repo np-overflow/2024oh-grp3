@@ -11,6 +11,8 @@
     "firebase": "^10.7.1",
     "openai": "^4.24.1",
     "react": "^18.2.0",
+    "react-circular-progressbar": "^2.1.0",
+    "react-confetti": "^6.1.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.21.0",
     "react-scripts": "5.0.1",
@@ -19,6 +21,9 @@
   },
   "devDependencies": {
     "tailwindcss": "^3.3.7"
+  },
+  "browser": {
+    "crypto": false
   },
   "scripts": {
     "start": "react-scripts start",

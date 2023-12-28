@@ -4,6 +4,7 @@ import { Routes, Route } from 'react-router-dom';
 import Home from './pages/Home/index';
 import Leaderboard from './pages/Leaderboard/index';
 import Game from './pages/Game/index';
+import EndGame from './pages/Game/End/index';
 
 function App() {
 
@@ -12,6 +13,7 @@ function App() {
       <Route path="/" element={<Home />} />
       <Route path='/leaderboard' element={<Leaderboard />} />
       <Route path='/game' element={<Game />} />
+      <Route path='/end' element={<EndGame />} />
     </Routes>
   );
 }

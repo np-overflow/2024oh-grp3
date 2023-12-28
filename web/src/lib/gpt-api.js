@@ -1,14 +1,13 @@
 import OpenAI from "openai"
-import dotenv from "dotenv"
-dotenv.config()
 
-async function RequestGPT(question, userInput) {
-    if (process.env.GPT_API_KEY === undefined) {
+export default async function RequestGPT(question, userInput) {
+    if (process.env.REACT_APP_APIKEY === undefined) {
         return "GPT API Key does not exist."
     }
 
     const openai = new OpenAI({
-        apiKey: process.env.GPT_API_KEY
+        apiKey: process.env.REACT_APP_APIKEY,
+        dangerouslyAllowBrowser: true 
     })
 
     try {
@@ -21,11 +20,9 @@ async function RequestGPT(question, userInput) {
             temperature: 0,
             max_tokens: 1000,
           });
-
+        console.log(response)
         return response.choices[0].message.content
     } catch (err) {
         console.error("An error occured: " + err.message)
     }
 }
-
-export default RequestGPT()
