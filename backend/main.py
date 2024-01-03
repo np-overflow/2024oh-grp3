@@ -9,7 +9,6 @@ client = OpenAI(api_key="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")
 # Sample dataset with MCQ and Open-Ended questions
 topics = {
     'Science': [
-        {'question': 'What is the capital of France?', 'type': 'MCQ', 'options': ['Paris', 'Berlin', 'Madrid'], 'correct_answer': 'Paris'},
         {'question': 'Who discovered penicillin?', 'type': 'Open-Ended', 'correct_answer': 'Fleming'},
     ],
     
