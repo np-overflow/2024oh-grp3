@@ -52,7 +52,7 @@ export default function Game() {
 
         } else {
             // Use GPT
-            // const gptResponse = await RequestGPT(questions[questionIndex].question, userInput)
+            // const gptResponse = await RequestGPT(questions[questionIndex].question, userInput, questions[questionIndex].correct_answer)
             // if (gptResponse === "y") tempUser.score += 1
         }
         setUser(tempUser)
