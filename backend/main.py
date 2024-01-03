@@ -196,5 +196,5 @@ def trivia_game():
             break
 
 if __name__ == "__main__":
-    trivia_game()
+    #trivia_game()
     app.run()

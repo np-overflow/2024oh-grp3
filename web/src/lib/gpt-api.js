@@ -20,8 +20,9 @@ export default async function RequestGPT(question, userInput, sampleAnswer) {
             temperature: 0,
             max_tokens: 1000,
           });
-        console.log(response)
-        return response.choices[0].message.content
+          console.log(response)
+
+          return response.choices[0].message.content
     } catch (err) {
         console.error("An error occured: " + err.message)
     }

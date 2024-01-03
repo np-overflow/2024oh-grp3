@@ -48,13 +48,12 @@ export default function Game() {
 
     async function handleSubmitForm() {
         let tempUser = user
-        if (searchParams.get("topic") === "Ngee Ann") {
-
-        } else {
-            // Use GPT
-            // const gptResponse = await RequestGPT(questions[questionIndex].question, userInput, questions[questionIndex].correct_answer)
-            // if (gptResponse === "y") tempUser.score += 1
-        }
+        // Use GPT
+        const gptResponse = await RequestGPT(questions[questionIndex].question, userInput, questions[questionIndex].correct_answer)
+        console.log(gptResponse)
+        console.log("AJFGSi")
+        if (gptResponse === "y") tempUser.score += 1
+        
         setUser(tempUser)
         setUserInput("")
 
