@@ -10,9 +10,18 @@ client = OpenAI(api_key="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")
 topics = {
     'Science': [
         {'question': 'What is the capital of France?', 'type': 'MCQ', 'options': ['Paris', 'Berlin', 'Madrid'], 'correct_answer': 'Paris'},
-        {'question': 'Who discovered penicillin?', 'type': 'Open-Ended', 'correct_answer': 'Fleming'},
+        {'question': 'Elements X and Y are in the same period of the Periodic Table. X is a metal and Y is a non-metal. Which statement is correct?', 'type': 'MCQ', 'options': ['X has a higher atomic number than Y.', 'X has more electron shells than Y.', 'Y has a higher atomic number than X.','Y has more electron shells than X.'], 'correct_answer': 'Y has a higher atomic number than X.'},
+        {'question': 'Which pair of substances act as reducing agents in the blast furnace?', 'type': 'Open-Ended', 'correct_answer': 'Carbon and carbon monoxide'},
+        {'question': 'Sodium and the element of proton number 10 have very different chemical reactivities. Use their electronic structures to explain this difference.', 'type': 'Open-Ended', 'correct_answer': 'Element with proton number 10 or neon has an octet structure for its valence shell while sodium does not. The sodium atom needs to react with other elements to lose its valence electron in order to achieve the stable octet structure of neon. Therefore, neon is very unreactive while sodium is a very reactive element.'},
+        {'question': 'Methanol boils at 65 degrees celsius and water boils at 100 degrees celsius. Methanol and water are completely miscible with each other. Which method is used to separate a mixture of these 2 liquids?', 'type': 'Open-Ended', 'correct_answer': 'Fractional distillation'},
+        {'question': 'Before fertilisation takes place, sperms travel through some parts of the female reproductive system to reach the ovum (egg). What is the correct order of the parts through which the sperms travel? (Separate each body part with a comma)', 'type': 'Open-Ended', 'correct_answer': 'Vagina, Cervix, Uterus, Oviduct'},
+        {'question': 'Define diffusion', 'type': 'Open-Ended', 'correct_answer': 'Net movement of particles from a region of higher concentration to a region of lower concentration down a concentration gradient.'},
+        {'question': 'Key: A= Adenine, C = Cytosine, T = Thymine, G = Guanine. Using the letters provided in the key, state the complementary bases on the corresponding strand of DNA, TGGACGTAGCTT', 'type': 'Open-Ended', 'correct_answer': 'ACCTGCATCGAA'},
+        {'question': 'A boy pushes a stationary box of mass 20 kg with a force of 50 N. Calculate the acceleration of the box. (Assume there is no friction.)', 'type': 'Open-Ended', 'correct_answer': '2.5 m/s^2'},
+        {'question': 'A policeman fired a pistol at a stationary wooden target. The bullet of mass 10.0 g left the pistol horizontally at a speed of 500 m/s. When the bullet hit the target, it got embedded in the target. The mass of the wooden target is 1.0 kg. What was the initial kinetic energy of the bullet when it left the pistol?', 'type': 'Open-Ended', 'correct_answer': '1250 J'},
+        {'question': 'Define Newton\'s second law of motion?', 'type': 'Open-Ended', 'correct_answer': 'Acceleration of a system is directly proportional to and in the same direction as the net external force acting on the system, and inversely proportional to its mass.'},
     ],
-    
+
     "Ngee Ann": [
         {'question': 'When was Ngee Ann Polytechnic founded?', 'type': 'Open-Ended', 'correct_answer': '25 May 1963'},
         {'question': 'State the dates (in full) of Ngee Ann Polytechnics open house.', 'type': 'Open-Ended', 'correct_answer': '4 January 2024, 5 January 2024, 6 January 2024'},
@@ -28,16 +37,16 @@ topics = {
     ],
     "IT": [
         {'question': 'ICT Society is an SIG. True or False?', 'type': 'Open-Ended', 'correct_answer': 'False'},
-        {'question': 'When you quote or paraphrase a line from a book in your assignment, you should A.Attribute the source in the body of the assignment after the quote, and in the reference or bibliography list. B.Attribute the source only if it is not from your recommended textbook. C. Attribute the source in the body of the assignment after the quote only. D. Attribute the source in the reference or bibliography list only. (Type your answer in terms of A, B, C or D)', 'type': 'Open-Ended', 'correct_answer': 'A'},
-        {'question': 'Yes, I can download the video because A. I will delete the video after the presentation and just give the link to my lecturer B. The video is Creative Commons Licensed and I will attribute the source. (Type your answer in terms of A, B, or Both)', 'type': 'Open-Ended', 'correct_answer': 'Both'},
+        {'question': 'When you quote or paraphrase a line from a book in your assignment, what should you do? ', 'type': 'Open-Ended', 'options': ['Attribute the source in the body of the assignment after the quote, and in the reference or bibliography list','Attribute the source only if it is not from your recommended textbook.', 'Attribute the source in the body of the assignment after the quote only.', 'Attribute the source in the reference or bibliography list only.'], 'correct_answer': 'Attribute the source in the body of the assignment after the quote, and in the reference or bibliography list'},
+        {'question': 'Yes, I can download the video because', 'type': 'Open-Ended', 'options':[ 'I will delete the video after the presentation and just give the link to my lecturer', 'The video is Creative Commons Licensed and I will attribute the source.','All of the above'], 'correct_answer': 'All of the above'},
         {'question': 'Which Python function tells me the length of a string?', 'type': 'Open-Ended', 'correct_answer': 'len()'},
-        {'question': 'Which of the following is an example of thinking computationally? A.When going to meet a friend, wander around until you find your friend. B. When going to meet a friend, ask Google Maps to plan the most efficient route for you. C.When going to meet a friend, decide to ask your friend to come and meet you instead. D. When going to meet a friend, planning out your route to save travelling time. (Type your answer in terms of A, B, C or D)', 'type': 'Open-Ended', 'correct_answer': 'D'},
-        {'question': 'Briefly describe what the Diploma in IT course is about.', 'type': 'Open-Ended', 'correct_answer': 'Information Technology is a broad base diploma where students gain a strong foundation in areas such as programming, networking, databases and operating systems. The diploma also allows students to pick from a wide range of elective modules that specialises in different disciplines.'},
-        {'question': 'State the four specialisations offered under the Diploma in IT course.', 'type': 'Open-Ended', 'correct_answer': 'artificial intelligence, cloud computing, software engineering, enterprise computing'},
+        {'question': 'Which of the following is an example of thinking computationally?', 'type': 'Open-Ended', 'options': ['When going to meet a friend, wander around until you find your friend.','When going to meet a friend, ask Google Maps to plan the most efficient route for you.', 'Chen going to meet a friend, decide to ask your friend to come and meet you instead.' ,'When going to meet a friend, planning out your route to save travelling time.'], 'correct_answer': 'When going to meet a friend, planning out your route to save travelling time.'},
+        {'question': 'How many bits to make a byte', 'type': 'Open-Ended', 'correct_answer': '8 bits'},
+        {'question': 'The first web browser invented in 1990 was?', 'type': 'Open-Ended', 'correct_answer': 'WorldWideWeb'},
         {'question': 'I cannot join any ICT SIGs if I am from another school in NP. True or False?', 'type': 'Open-Ended', 'correct_answer': 'False'},
-        {'question': 'Briefly describe what the Diploma in Data Science course is about.', 'type': 'Open-Ended', 'correct_answer': 'Data Science is a diploma that harnesses students with the power of analytics and transforms data into value. This course will help build core skills in programming, databases and analytics, as well as learn key statistical concepts and data visualisation techniques for analyses and presentations. With modules such as Machine learning and Data Wrangling, this course will equip you with the tools to get a great kickstart into your data science journey​'},
-        {'question': '', 'type': 'Open-Ended', 'correct_answer': ''},
-        
+        {'question': 'What is the weakest link in the security chain?', 'type': 'Open-Ended', 'options': ['Outdated Systems', 'Antiviruses', 'The human element', 'Weak practices'],'correct_answer': 'The human element'},
+        {'question': 'What does BIOS stand for?', 'type': 'Open-Ended', 'options': ['Basic Inbox/Outgoing System.', 'Basic Input/Output System.', 'Basic Interface Output System.', 'Basic Input/Outsource Shape'],'correct_answer': 'Basic Input/Output System.'},
+
     ],
     "Math": [
         {'question': 'A bag contains 13 pink counters and 6 green counters. Two counters are taken from the bag at random without replacement. Find the probability that only one of the counters is green.', 'type': 'Open-Ended', 'correct_answer': '26/57'},
@@ -46,11 +55,11 @@ topics = {
         {'question': 'A map of Korea has a scale of 1 : 2500 000. The length of the Han River on the map is 49.3 cm. Calculate the actual length, in kilometres of the Han River.', 'type': 'Open-Ended', 'correct_answer': '1232.5 km'},
         {'question': 'In 2016, the number of passengers passing through Changi Airport was 5.41 * 10^7. Calculate the mean number of passengers passing through the airport each month. Give your answer in millions, correct to 3 significant figures.', 'type': 'Open-Ended', 'correct_answer': '4.51 million (3s.f.)'},
         {'question': 'Simplify 5p - 3(p-2)', 'type': 'Open-Ended', 'correct_answer': '2p+6'},
-        {'question': 'A = (b(c+2))/ (5-c). Rearrange the formula to make c the subject', 'type': 'Open-Ended', 'correct_answer': 'c = (5A-2B)/(A+B)'},
+        {'question': 'A = (b(c+2))/ (5-c). Rearrange the formula to make c the subject (NO SPACING)', 'type': 'Open-Ended', 'correct_answer': 'c=(5A-2B)/(A+B)'},
         {'question': 'Solve (3x-4) / 2 - 2x/3 = 1', 'type': 'Open-Ended', 'correct_answer': '3.6'},
         {'question': 'Whose theorem states that a^2 + b^2 = c^2', 'type': 'Open-Ended', 'correct_answer': 'Pythagoras'},
-        {'question': 'Find the prime factor of 1188, giving your answer in index form', 'type': 'Open-Ended', 'correct_answer': '2^2 * 3^3 * 11'},
-    ]
+        {'question': 'Find the prime factor of 1188, giving your answer in index form (use ^ for to the power of, and * for multiplication, NO SPACING)', 'type': 'Open-Ended', 'correct_answer': '2^2*3^3*11'},
+    ],
 }
 
 # Flask Implimentation
@@ -75,28 +84,21 @@ def verifyAnswerEndpoint():
     pass
 
 def get_vector_embedding(text):
-    # Use ChatGPT API for generating embeddings
-    response = client.chat.completions.create(
-        model="gpt-3.5-turbo",  # You can choose the engine based on your requirements
-        messages=[
-          {"role": "system", "content": "You are an expert in analysing the similarity between the user"},
-          {"role": "user", "content": f"Analyze similarity between: {text}"},
-        ],
-        temperature=0,
-        max_tokens=0,
-        n=1,
-        stop=None,
+    # Use OpenAI API for generating embeddings
+    response = client.embeddings.create(
+        input=text, 
+        model="text-embedding-ada-002"
     )
-
-    # Extract the last response as the generated text
-    generated_text = response['choices'][0]['text']
 
     # Extract the vector part from the generated text
     # Modify this extraction based on the format of the response from the ChatGPT API
-    vector_str = generated_text  # Placeholder, modify as needed
+    try:
+        generated_text = response.data[0].embedding
+    except KeyError:
+        raise ValueError("Unexpected response structure. Check the API response structure.")
 
     # Convert the string representation of the vector to a numpy array
-    vector_embedding = np.array([float(value) for value in vector_str.split()])
+    vector_embedding = np.array([float(value) for value in generated_text])
 
     return vector_embedding
 
@@ -112,34 +114,39 @@ def cosine_similarity_score(embedding1, embedding2):
     return similarity_score
 
 def verify_answer(user_answer, correct_answer, question_type):
-    # For MCQ, just directly compare since it's a fixed number of options.
-    if question_type == 'MCQ':
-        if user_answer == correct_answer:
-          return True # save money for API request since MCQ doesn't need similarity testing
-        else:
-          return False
+    if question_type == 'MCQ' or selected_topic == 'Math' or correct_answer.isnumeric() or correct_answer.isupper():
+        # Directly compare answers for MCQ, Math, numeric, and uppercase answers
+        return user_answer.strip() == correct_answer.strip()
 
-    # Use ChatGPT API for generating similarity score
-    response = client.completions.create(
-        model="gpt-3.5-turbo",
-        messages=[
-          {"role": "system", "content": "You are an expert in analysing the similarity between the user's answer and correct answer"},
-          {"role": "user", "content": f"Compare similarity between: User: {user_answer} | Correct: {correct_answer}. Return"},
-        ],
-        temperature=0,
-        max_tokens=0,
-        n=1,
-        stop=None,
-    )
+    # Check for True/False questions
+    if correct_answer == 'False' or correct_answer == 'True':
+      return user_answer.strip().lower() == correct_answer.strip().lower()
 
-    # Extract the similarity score from the response
-    similarity_score = float(response['choices'][0]['text'])
+
+    # Check for specific conditions where direct comparison may be needed
+    if is_numeric_answer(user_answer) and is_text_answer(correct_answer):
+        return False  # Numeric answers should not be similar to text answers
+
+    # Use the model for embedding and cosine similarity for other cases
+    user_embedding = get_vector_embedding(user_answer)
+    correct_embedding = get_vector_embedding(correct_answer)
+    similarity_score = cosine_similarity_score(user_embedding, correct_embedding)
 
     # Set a threshold for similarity
-    threshold = 0.7
+    threshold = 0.9
 
     # Verify the answer based on the similarity score
     return similarity_score > threshold
+
+def is_numeric_answer(answer):
+    try:
+        float(answer)
+        return True
+    except ValueError:
+        return False
+
+def is_text_answer(answer):
+    return not is_numeric_answer(answer)
 
 def ask_question(question_data):
     question = question_data['question']
@@ -154,7 +161,16 @@ def ask_question(question_data):
             print(f"{i}. {option}")
 
         # Get user's answer for MCQ
-        user_choice = int(input("Your choice (enter the number): "))
+        while True:
+            try:
+                user_choice = int(input("Your choice (enter the number): "))
+                if 1 <= user_choice <= len(options):
+                    break  # Valid choice, exit the loop
+                else:
+                    print(f"Please enter a number between 1 and {len(options)}")
+            except ValueError:
+                print(f"Please enter a valid integer between 1 and {len(options)}")
+
         user_answer = options[user_choice - 1]
     else:
         # Get user's answer for Open-Ended
@@ -163,11 +179,14 @@ def ask_question(question_data):
     return user_answer
 
 def trivia_game():
-    total_score = 0
 
     while True:
+
+        # Set score to 0 every time the game restarts.
+        total_score = 0
         # Allow user to select a topic (replace this with your UI logic)
-        selected_topic = input("Select a topic (Science/History): ")
+        global selected_topic
+        selected_topic = input("Select a topic: ")
 
         if selected_topic not in topics:
             print("Invalid topic. Please select a valid topic.")
