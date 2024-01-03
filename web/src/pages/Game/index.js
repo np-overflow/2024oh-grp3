@@ -41,9 +41,14 @@ export default function Game() {
         setUserInput("")
 
         if (questionIndex + 1 === numOfQns) {
-            await updateDoc(doc(db, "users", searchParams.get("user"), {
-                score: user.score
-            }))
+            try {
+                const userRef = doc(db, "users", searchParams.get("user"))
+                await updateDoc(userRef, {
+                    score: user.score
+                })
+            } catch (err) {
+                console.log(err)
+            }
             navigate(`/end?user=${user.id}`)
         } else {
             setQuestionIndex(questionIndex + 1)
