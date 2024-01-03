@@ -1,6 +1,6 @@
 import './Home.css';
 import { Link, useNavigate } from 'react-router-dom';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { ChartBarIcon } from '@heroicons/react/24/solid'
 import { v4 as uuidv4 } from 'uuid';
 import db from '../../lib/firebase-config';
@@ -10,6 +10,10 @@ export default function Home() {
     const topics = ["Ngee Ann", "IT", "Math", "Science"] // should be replaced by API
     const [selectedTopic, setSelectedTopic] = useState()
     const [popupShown, setPopupShown] = useState(false)
+
+    useEffect(() => {
+        document.title = "Trivia | Home"
+    }, [])
 
     return (
         <div className="text-white bg-gray-900 flex items-center p-10 flex-col duration-150 min-h-screen w-full gap-10">

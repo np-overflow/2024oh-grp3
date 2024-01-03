@@ -3,10 +3,18 @@ import db from "../../lib/firebase-config";
 import { doc, getDoc, updateDoc } from "firebase/firestore"; 
 import RequestGPT from "../../lib/gpt-api";
 import { useNavigate, useSearchParams } from "react-router-dom";
+import axios from 'axios'
 
 export default function Game() {
     const numOfQns = 10
 
+    const [questions, setQuestions] = useState([
+        {
+            "correct_answer": "25 May 1963",
+            "question": "When was Ngee Ann Polytechnic founded?",
+            "type": "Open-Ended"
+          }
+    ])
     const [searchParams, setSearchParams] = useSearchParams()
     const [user, setUser] = useState({})
     const [questionIndex, setQuestionIndex] = useState(0)
@@ -25,7 +33,17 @@ export default function Game() {
             }
         }
 
+        const apiUrl = "http://localhost:5000/"
+        async function getQuestions() {
+            const response = await axios.get(`${apiUrl}/questions?topic=${searchParams.get("topic")}`)
+            const data = response.data
+            if (data.response === "success") {
+                setQuestions(data.questions)
+            }
+        }
+
         getUser()
+        getQuestions()
     }, [])
 
     async function handleSubmitForm() {
@@ -34,8 +52,8 @@ export default function Game() {
 
         } else {
             // Use GPT
-            const gptResponse = await RequestGPT("Placeholder", userInput)
-            if (gptResponse === "y") tempUser.score += 1
+            // const gptResponse = await RequestGPT(questions[questionIndex].question, userInput)
+            // if (gptResponse === "y") tempUser.score += 1
         }
         setUser(tempUser)
         setUserInput("")
@@ -64,7 +82,7 @@ export default function Game() {
                 </header>
                 <section id="question">
                     <p className="text-3xl font-bold">Question {questionIndex + 1}</p>
-                    <p className="text-xl">Some question goes here!!!</p>
+                    <p className="text-xl">{questions[questionIndex].question}</p>
                     <input
                         className="mt-4 py-2 px-4 rounded-lg bg-white/[0.1] text-lg"
                         placeholder="Your Answer"
