@@ -2,7 +2,6 @@ from openai import OpenAI
 import numpy as np
 from sklearn.metrics.pairwise import cosine_similarity
 from flask import Flask, jsonify, request
-import random
 
 # Set up OpenAI API key
 client = OpenAI(api_key="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")
@@ -25,7 +24,7 @@ topics = {
         {'question': 'During the NP 2021 graduation ceremony, which minister announced the pilot run of the Personalised Learning Pathway which allows students to have the opportunity to graduate with a minor on top of their diploma?', 'type': 'Open-Ended', 'correct_answer': 'Lawrence Wong'},
         {'question': 'Which local artiste recently enrolled in NP as a student?', 'type': 'Open-Ended', 'correct_answer': 'Dennis Chew'},
         {'question': 'NPs original aim was to become a university. True or False?', 'type': 'Open-Ended', 'correct_answer': 'True'},
-        {'question': 'State the vehicle that is situated in front of the aerospace hub.', 'type': 'Open-Ended', 'correct_answer': 'Bell huey helicopter/ helicopter'},
+        {'question': 'State the vehicle that is situated in front of the aerospace hub.', 'type': 'Open-Ended', 'correct_answer': 'Bell huey helicopter'},
     ],
     "IT": [
         {'question': 'ICT Society is an SIG. True or False?', 'type': 'Open-Ended', 'correct_answer': 'False'},
@@ -33,10 +32,10 @@ topics = {
         {'question': 'Yes, I can download the video because A. I will delete the video after the presentation and just give the link to my lecturer B. The video is Creative Commons Licensed and I will attribute the source. (Type your answer in terms of A, B, or Both)', 'type': 'Open-Ended', 'correct_answer': 'Both'},
         {'question': 'Which Python function tells me the length of a string?', 'type': 'Open-Ended', 'correct_answer': 'len()'},
         {'question': 'Which of the following is an example of thinking computationally? A.When going to meet a friend, wander around until you find your friend. B. When going to meet a friend, ask Google Maps to plan the most efficient route for you. C.When going to meet a friend, decide to ask your friend to come and meet you instead. D. When going to meet a friend, planning out your route to save travelling time. (Type your answer in terms of A, B, C or D)', 'type': 'Open-Ended', 'correct_answer': 'D'},
-        {'question': 'Briefly describe what the Diploma in IT course is about.', 'type': 'Open-Ended', 'correct_answer': ''},
-        {'question': '', 'type': 'Open-Ended', 'correct_answer': ''},
-        {'question': '', 'type': 'Open-Ended', 'correct_answer': ''},
-        {'question': '', 'type': 'Open-Ended', 'correct_answer': ''},
+        {'question': 'Briefly describe what the Diploma in IT course is about.', 'type': 'Open-Ended', 'correct_answer': 'Information Technology is a broad base diploma where students gain a strong foundation in areas such as programming, networking, databases and operating systems. The diploma also allows students to pick from a wide range of elective modules that specialises in different disciplines.'},
+        {'question': 'State the four specialisations offered under the Diploma in IT course.', 'type': 'Open-Ended', 'correct_answer': 'artificial intelligence, cloud computing, software engineering, enterprise computing'},
+        {'question': 'I cannot join any ICT SIGs if I am from another school in NP. True or False?', 'type': 'Open-Ended', 'correct_answer': 'False'},
+        {'question': 'Briefly describe what the Diploma in Data Science course is about.', 'type': 'Open-Ended', 'correct_answer': 'Data Science is a diploma that harnesses students with the power of analytics and transforms data into value. This course will help build core skills in programming, databases and analytics, as well as learn key statistical concepts and data visualisation techniques for analyses and presentations. With modules such as Machine learning and Data Wrangling, this course will equip you with the tools to get a great kickstart into your data science journey​'},
         {'question': '', 'type': 'Open-Ended', 'correct_answer': ''},
         
     ],
@@ -69,6 +68,11 @@ def questionsEndpoint():
         "response": "success",
         "questions": topics[topic]
     }), 200
+    
+@app.route("/verifyans", methods=["GET"])
+def verifyAnswerEndpoint():
+    args = request.args
+    pass
 
 def get_vector_embedding(text):
     # Use ChatGPT API for generating embeddings
