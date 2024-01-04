@@ -107,7 +107,6 @@ def get_vector_embedding(text):
     response = client.embeddings.create(
         input=text, 
         model="text-embedding-ada-002",
-        max_tokens=20
     )
 
     # Extract the vector part from the generated text
