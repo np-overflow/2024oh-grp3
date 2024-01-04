@@ -7,6 +7,7 @@ import axios from 'axios'
 
 export default function Game() {
     const numOfQns = 10
+    const apiUrl = "http://localhost:5000/"
 
     const [questions, setQuestions] = useState([
         {
@@ -19,6 +20,11 @@ export default function Game() {
     const [user, setUser] = useState({})
     const [questionIndex, setQuestionIndex] = useState(0)
     const [userInput, setUserInput] = useState()
+    const [err, setErr] = useState({
+        "isErr": false,
+        "title": "",
+        "msg": ""
+    })
     const navigate = useNavigate();
 
     useState(() => {
@@ -33,7 +39,6 @@ export default function Game() {
             }
         }
 
-        const apiUrl = "http://localhost:5000/"
         async function getQuestions() {
             const response = await axios.get(`${apiUrl}/questions?topic=${searchParams.get("topic")}`)
             const data = response.data
@@ -48,12 +53,22 @@ export default function Game() {
 
     async function handleSubmitForm() {
         let tempUser = user
+        // Call backend
+        try {
+            const response = await axios.get(`${apiUrl}/verifyans?userAns=${userInput}&corrAns=${questions[questionIndex].correct_answer}&qnType=${questions[questionIndex].type}&topic=${searchParams.get("topic")}`)
+            console.log(response)
+            console.log(response.data.isCorrect)
+            if (response.data.isCorrect) {
+                tempUser.score += 1
+            }
+        } catch (err) {
+            console.error("Failed to verify user answer")
+        }
+
         // Use GPT
-        const gptResponse = await RequestGPT(questions[questionIndex].question, userInput, questions[questionIndex].correct_answer)
-        console.log(gptResponse)
-        console.log("AJFGSi")
-        if (gptResponse === "y") tempUser.score += 1
-        
+        // const gptResponse = await RequestGPT(questions[questionIndex].question, userInput, questions[questionIndex].correct_answer)
+        // if (gptResponse === "y") tempUser.score += 1
+
         setUser(tempUser)
         setUserInput("")
 
@@ -82,6 +97,14 @@ export default function Game() {
                 <section id="question">
                     <p className="text-3xl font-bold">Question {questionIndex + 1}</p>
                     <p className="text-xl">{questions[questionIndex].question}</p>
+                    {questions[questionIndex].type === "MCQ" ? 
+                        <div className="text-xl mt-2">
+                            {questions[questionIndex].options.map((qn) => (
+                                <p>{qn}</p>
+                            ))}
+                        </div>
+                        : <></>
+                    }
                     <input
                         className="mt-4 py-2 px-4 rounded-lg bg-white/[0.1] text-lg"
                         placeholder="Your Answer"

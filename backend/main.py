@@ -4,7 +4,7 @@ from sklearn.metrics.pairwise import cosine_similarity
 from flask import Flask, jsonify, request
 
 # Set up OpenAI API key
-client = OpenAI(api_key="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")
+client = OpenAI(api_key="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")
 
 # Sample dataset with MCQ and Open-Ended questions
 topics = {
@@ -81,13 +81,28 @@ def questionsEndpoint():
 @app.route("/verifyans", methods=["GET"])
 def verifyAnswerEndpoint():
     args = request.args
-    pass
+    userAns = args.get("userAns")
+    corrAns = args.get("corrAns")
+    qnType = args.get("qnType")
+    topic = args.get("topic")
+    
+    if verify_answer(userAns, corrAns, qnType, topic):
+        return jsonify({
+            "response": "success",
+            "isCorrect": True
+        }), 200
+    
+    return jsonify({
+        "response": "success",
+        "isCorrect": False
+    }), 200
 
 def get_vector_embedding(text):
     # Use OpenAI API for generating embeddings
     response = client.embeddings.create(
         input=text, 
-        model="text-embedding-ada-002"
+        model="text-embedding-ada-002",
+        max_tokens=20
     )
 
     # Extract the vector part from the generated text
@@ -113,10 +128,10 @@ def cosine_similarity_score(embedding1, embedding2):
 
     return similarity_score
 
-def verify_answer(user_answer, correct_answer, question_type):
+def verify_answer(user_answer, correct_answer, question_type, selected_topic):
     if question_type == 'MCQ' or selected_topic == 'Math' or correct_answer.isnumeric() or correct_answer.isupper():
         # Directly compare answers for MCQ, Math, numeric, and uppercase answers
-        return user_answer.strip() == correct_answer.strip()
+        return user_answer.strip().lower() == correct_answer.strip().lower()
 
     # Check for True/False questions
     if correct_answer == 'False' or correct_answer == 'True':
