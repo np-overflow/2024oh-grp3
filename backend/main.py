@@ -2,6 +2,7 @@ from openai import OpenAI
 import numpy as np
 from sklearn.metrics.pairwise import cosine_similarity
 from flask import Flask, jsonify, request
+from flask_cors import CORS, cross_origin
 
 # Set up OpenAI API key
 client = OpenAI(api_key="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")
@@ -64,12 +65,15 @@ topics = {
 
 # Flask Implimentation
 app = Flask(__name__)
+CORS(app, supports_credentials=True)
 
 @app.route("/")
+@cross_origin(supports_credentials=True)
 def home():
     return "HELLO"
 
 @app.route("/questions", methods=["GET"])
+@cross_origin(supports_credentials=True)
 def questionsEndpoint():
     args = request.args
     topic = args.get("topic")
@@ -79,6 +83,7 @@ def questionsEndpoint():
     }), 200
     
 @app.route("/verifyans", methods=["GET"])
+@cross_origin(supports_credentials=True)
 def verifyAnswerEndpoint():
     args = request.args
     userAns = args.get("userAns")

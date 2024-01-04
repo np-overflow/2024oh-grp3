@@ -7,7 +7,7 @@ import axios from 'axios'
 
 export default function Game() {
     const numOfQns = 10
-    const apiUrl = "http://localhost:5000/"
+    const apiUrl = "http://localhost:5000"
 
     const [questions, setQuestions] = useState([
         {
