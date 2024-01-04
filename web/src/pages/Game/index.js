@@ -47,11 +47,15 @@ export default function Game() {
         getQuestions()
     }, [])
 
-    async function handleSubmitForm() {
+    async function handleSubmitForm(possibleAns) {
         let tempUser = user
         // Call backend
         try {
-            const response = await axios.get(`${apiUrl}/verifyans?userAns=${userInput}&corrAns=${questions[questionIndex].correct_answer}&qnType=${questions[questionIndex].type}&topic=${searchParams.get("topic")}`)
+            let temp = ""
+            if (userInput === undefined || userInput === "") { temp = possibleAns } 
+            else { temp = userInput }
+
+            const response = await axios.get(`${apiUrl}/verifyans?userAns=${temp}&corrAns=${questions[questionIndex].correct_answer}&qnType=${questions[questionIndex].type}&topic=${searchParams.get("topic")}`)
             if (response.data.isCorrect) {
                 tempUser.score += 1
             }
@@ -98,9 +102,9 @@ export default function Game() {
                                 className="p-3 bg-emerald-700 rounded-lg"
                                 onClick={(e) => {
                                     e.preventDefault()
-                                    setUserInput(qn)
 
-                                    handleSubmitForm()
+                                    setUserInput(qn)
+                                    handleSubmitForm(qn)
                                 }}
                                 >
                                     {qn}
