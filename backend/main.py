@@ -50,7 +50,7 @@ topics = {
     ],
     "Math": [
         {'question': 'A bag contains 13 pink counters and 6 green counters. Two counters are taken from the bag at random without replacement. Find the probability that only one of the counters is green.', 'type': 'Open-Ended', 'correct_answer': '26/57'},
-        {'question': 'How many five-letter words can be made using letters in the word “SESSIONS” with no replacement of letters?', 'type': 'Open-Ended', 'correct_answer': '500'},
+        {'question': 'How many five-letter words can be made using letters in the word SESSIONS with no replacement of letters?', 'type': 'Open-Ended', 'correct_answer': '500'},
         {'question': 'Differentiate sin x', 'type': 'Open-Ended', 'correct_answer': 'cos x'},
         {'question': 'A map of Korea has a scale of 1 : 2500 000. The length of the Han River on the map is 49.3 cm. Calculate the actual length, in kilometres of the Han River.', 'type': 'Open-Ended', 'correct_answer': '1232.5 km'},
         {'question': 'In 2016, the number of passengers passing through Changi Airport was 5.41 * 10^7. Calculate the mean number of passengers passing through the airport each month. Give your answer in millions, correct to 3 significant figures.', 'type': 'Open-Ended', 'correct_answer': '4.51 million (3s.f.)'},
