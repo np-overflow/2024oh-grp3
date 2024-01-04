@@ -10,11 +10,7 @@ export default function Game() {
     const apiUrl = "http://localhost:5000"
 
     const [questions, setQuestions] = useState([
-        {
-            "correct_answer": "25 May 1963",
-            "question": "When was Ngee Ann Polytechnic founded?",
-            "type": "Open-Ended"
-          }
+        {'question': 'What does BIOS stand for?', 'type': 'MCQ', 'options': ['Basic Inbox/Outgoing System.', 'Basic Input/Output System.', 'Basic Interface Output System.', 'Basic Input/Outsource Shape'],'correct_answer': 'Basic Input/Output System.'},
     ])
     const [searchParams, setSearchParams] = useSearchParams()
     const [user, setUser] = useState({})
@@ -56,8 +52,6 @@ export default function Game() {
         // Call backend
         try {
             const response = await axios.get(`${apiUrl}/verifyans?userAns=${userInput}&corrAns=${questions[questionIndex].correct_answer}&qnType=${questions[questionIndex].type}&topic=${searchParams.get("topic")}`)
-            console.log(response)
-            console.log(response.data.isCorrect)
             if (response.data.isCorrect) {
                 tempUser.score += 1
             }
@@ -98,25 +92,38 @@ export default function Game() {
                     <p className="text-3xl font-bold">Question {questionIndex + 1}</p>
                     <p className="text-xl">{questions[questionIndex].question}</p>
                     {questions[questionIndex].type === "MCQ" ? 
-                        <div className="text-xl mt-2">
+                        <div className="flex flex-row flex-wrap gap-4 text-xl mt-2">
                             {questions[questionIndex].options.map((qn) => (
-                                <p>{qn}</p>
+                                <button
+                                className="p-3 bg-emerald-700 rounded-lg"
+                                onClick={(e) => {
+                                    e.preventDefault()
+                                    setUserInput(qn)
+
+                                    handleSubmitForm()
+                                }}
+                                >
+                                    {qn}
+                                </button>
                             ))}
                         </div>
-                        : <></>
+                        :
+                        <input
+                            className="mt-4 py-2 px-4 rounded-lg bg-white/[0.1] text-lg"
+                            placeholder="Your Answer"
+                            value={userInput}
+                            onChange={(e) => setUserInput(e.target.value)}
+                        ></input>
                     }
-                    <input
-                        className="mt-4 py-2 px-4 rounded-lg bg-white/[0.1] text-lg"
-                        placeholder="Your Answer"
-                        value={userInput}
-                        onChange={(e) => setUserInput(e.target.value)}
-                    ></input>
                 </section>
-                <button
-                    className={`p-2 rounded-lg ${!userInput ? "cursor-not-allowed bg-gray-700" : "bg-amber-600 hover:bg-amber-700"} duration-200`}
-                    disabled={!userInput}
-                    onClick={() => handleSubmitForm()}
-                >{!userInput ? "Enter your answer" : questionIndex === numOfQns - 1 ? "Finish" : "Submit"}</button>
+                {questions[questionIndex].type !== "MCQ" ? 
+                    <button
+                        className={`p-2 rounded-lg ${!userInput ? "cursor-not-allowed bg-gray-700" : "bg-amber-600 hover:bg-amber-700"} duration-200`}
+                        disabled={!userInput}
+                        onClick={() => handleSubmitForm()}
+                    >{!userInput ? "Enter your answer" : questionIndex === numOfQns - 1 ? "Finish" : "Submit"}</button>
+                    : <></>
+                }
             </div>            
         </div>
     )

@@ -10,7 +10,6 @@ client = OpenAI(api_key="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")
 # Sample dataset with MCQ and Open-Ended questions
 topics = {
     'Science': [
-        {'question': 'What is the capital of France?', 'type': 'MCQ', 'options': ['Paris', 'Berlin', 'Madrid'], 'correct_answer': 'Paris'},
         {'question': 'Elements X and Y are in the same period of the Periodic Table. X is a metal and Y is a non-metal. Which statement is correct?', 'type': 'MCQ', 'options': ['X has a higher atomic number than Y.', 'X has more electron shells than Y.', 'Y has a higher atomic number than X.','Y has more electron shells than X.'], 'correct_answer': 'Y has a higher atomic number than X.'},
         {'question': 'Which pair of substances act as reducing agents in the blast furnace?', 'type': 'Open-Ended', 'correct_answer': 'Carbon and carbon monoxide'},
         {'question': 'Sodium and the element of proton number 10 have very different chemical reactivities. Use their electronic structures to explain this difference.', 'type': 'Open-Ended', 'correct_answer': 'Element with proton number 10 or neon has an octet structure for its valence shell while sodium does not. The sodium atom needs to react with other elements to lose its valence electron in order to achieve the stable octet structure of neon. Therefore, neon is very unreactive while sodium is a very reactive element.'},
@@ -38,15 +37,15 @@ topics = {
     ],
     "IT": [
         {'question': 'ICT Society is an SIG. True or False?', 'type': 'Open-Ended', 'correct_answer': 'False'},
-        {'question': 'When you quote or paraphrase a line from a book in your assignment, what should you do? ', 'type': 'Open-Ended', 'options': ['Attribute the source in the body of the assignment after the quote, and in the reference or bibliography list','Attribute the source only if it is not from your recommended textbook.', 'Attribute the source in the body of the assignment after the quote only.', 'Attribute the source in the reference or bibliography list only.'], 'correct_answer': 'Attribute the source in the body of the assignment after the quote, and in the reference or bibliography list'},
-        {'question': 'Yes, I can download the video because', 'type': 'Open-Ended', 'options':[ 'I will delete the video after the presentation and just give the link to my lecturer', 'The video is Creative Commons Licensed and I will attribute the source.','All of the above'], 'correct_answer': 'All of the above'},
+        {'question': 'When you quote or paraphrase a line from a book in your assignment, what should you do? ', 'type': 'MCQ', 'options': ['Attribute the source in the body of the assignment after the quote, and in the reference or bibliography list','Attribute the source only if it is not from your recommended textbook.', 'Attribute the source in the body of the assignment after the quote only.', 'Attribute the source in the reference or bibliography list only.'], 'correct_answer': 'Attribute the source in the body of the assignment after the quote, and in the reference or bibliography list'},
+        {'question': 'Yes, I can download the video because', 'type': 'MCQ', 'options':[ 'I will delete the video after the presentation and just give the link to my lecturer', 'The video is Creative Commons Licensed and I will attribute the source.','All of the above'], 'correct_answer': 'All of the above'},
         {'question': 'Which Python function tells me the length of a string?', 'type': 'Open-Ended', 'correct_answer': 'len()'},
-        {'question': 'Which of the following is an example of thinking computationally?', 'type': 'Open-Ended', 'options': ['When going to meet a friend, wander around until you find your friend.','When going to meet a friend, ask Google Maps to plan the most efficient route for you.', 'Chen going to meet a friend, decide to ask your friend to come and meet you instead.' ,'When going to meet a friend, planning out your route to save travelling time.'], 'correct_answer': 'When going to meet a friend, planning out your route to save travelling time.'},
+        {'question': 'Which of the following is an example of thinking computationally?', 'type': 'MCQ', 'options': ['When going to meet a friend, wander around until you find your friend.','When going to meet a friend, ask Google Maps to plan the most efficient route for you.', 'Chen going to meet a friend, decide to ask your friend to come and meet you instead.' ,'When going to meet a friend, planning out your route to save travelling time.'], 'correct_answer': 'When going to meet a friend, planning out your route to save travelling time.'},
         {'question': 'How many bits to make a byte', 'type': 'Open-Ended', 'correct_answer': '8 bits'},
         {'question': 'The first web browser invented in 1990 was?', 'type': 'Open-Ended', 'correct_answer': 'WorldWideWeb'},
         {'question': 'I cannot join any ICT SIGs if I am from another school in NP. True or False?', 'type': 'Open-Ended', 'correct_answer': 'False'},
-        {'question': 'What is the weakest link in the security chain?', 'type': 'Open-Ended', 'options': ['Outdated Systems', 'Antiviruses', 'The human element', 'Weak practices'],'correct_answer': 'The human element'},
-        {'question': 'What does BIOS stand for?', 'type': 'Open-Ended', 'options': ['Basic Inbox/Outgoing System.', 'Basic Input/Output System.', 'Basic Interface Output System.', 'Basic Input/Outsource Shape'],'correct_answer': 'Basic Input/Output System.'},
+        {'question': 'What is the weakest link in the security chain?', 'type': 'MCQ', 'options': ['Outdated Systems', 'Antiviruses', 'The human element', 'Weak practices'],'correct_answer': 'The human element'},
+        {'question': 'What does BIOS stand for?', 'type': 'MCQ', 'options': ['Basic Inbox/Outgoing System.', 'Basic Input/Output System.', 'Basic Interface Output System.', 'Basic Input/Outsource Shape'],'correct_answer': 'Basic Input/Output System.'},
 
     ],
     "Math": [
@@ -54,7 +53,7 @@ topics = {
         {'question': 'How many five-letter words can be made using letters in the word SESSIONS with no replacement of letters?', 'type': 'Open-Ended', 'correct_answer': '500'},
         {'question': 'Differentiate sin x', 'type': 'Open-Ended', 'correct_answer': 'cos x'},
         {'question': 'A map of Korea has a scale of 1 : 2500 000. The length of the Han River on the map is 49.3 cm. Calculate the actual length, in kilometres of the Han River.', 'type': 'Open-Ended', 'correct_answer': '1232.5 km'},
-        {'question': 'In 2016, the number of passengers passing through Changi Airport was 5.41 * 10^7. Calculate the mean number of passengers passing through the airport each month. Give your answer in millions, correct to 3 significant figures.', 'type': 'Open-Ended', 'correct_answer': '4.51 million (3s.f.)'},
+        {'question': 'In 2016, the number of passengers passing through Changi Airport was 5.41 * 10^7. Calculate the mean number of passengers passing through the airport each month. Give your answer in millions, correct to 3 significant figures in FULL FORM (E.G 1,200,000)', 'type': 'Open-Ended', 'correct_answer': '4,510,000'},
         {'question': 'Simplify 5p - 3(p-2)', 'type': 'Open-Ended', 'correct_answer': '2p+6'},
         {'question': 'A = (b(c+2))/ (5-c). Rearrange the formula to make c the subject (NO SPACING)', 'type': 'Open-Ended', 'correct_answer': 'c=(5A-2B)/(A+B)'},
         {'question': 'Solve (3x-4) / 2 - 2x/3 = 1', 'type': 'Open-Ended', 'correct_answer': '3.6'},
@@ -152,7 +151,7 @@ def verify_answer(user_answer, correct_answer, question_type, selected_topic):
     similarity_score = cosine_similarity_score(user_embedding, correct_embedding)
 
     # Set a threshold for similarity
-    threshold = 0.9
+    threshold = 0.8
 
     # Verify the answer based on the similarity score
     return similarity_score > threshold
